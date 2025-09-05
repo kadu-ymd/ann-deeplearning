@@ -112,7 +112,6 @@ plugins:
   - git-committers:
       repository: hsandmann/hsandmann.github.com
       branch: main
-      token: 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
   - search
   - badges
   - minify:
