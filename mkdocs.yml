@@ -1,8 +1,8 @@
-site_name: Template de Entrega
-site_author: Sandmann, H.
+site_name: ANN and Deep Learning
+site_author: Yamada, C.
 site_url: https://hsandmann.github.io/documentation.template
-repo_url: https://github.com/hsandmann/documentation.template
-repo_name: github/documentation.template
+repo_url: https://github.com/kadu-ymd/ann-deeplearning
+repo_name: github/ann-deeplearning
 
 theme:
   name: material
@@ -110,9 +110,8 @@ plugins:
       enable_creation_date: true
   - git-authors
   - git-committers:
-      repository: hsandmann/hsandmann.github.com
+      repository: kadu-ymd/kadu-ymd.github.com
       branch: main
-      token: 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
   - search
   - badges
   - minify:
@@ -133,13 +132,5 @@ extra_javascript:
   - https://fastly.jsdelivr.net/npm/echarts/dist/echarts.min.js
 
 nav:
-  - Home: index.md
-  - This documentation: ./thisdocumentation/main.md
-  - Roteiros:
-    - Roteiro 1: ./roteiro1/main.md
-    - Roteiro 2: ./roteiro2/main.md
-    - Roteiro 3: ./roteiro3/main.md
-    - Roteiro 4: ./roteiro4/main.md
-  - Projeto: ./projeto/main.md
   - Exercício da aula de Data: ./ex1_data/main.md
 
