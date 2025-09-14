@@ -1,4 +1,4 @@
-from utils import *
+from utils.data import *
 import numpy as np
 import matplotlib.pyplot as plt
 
