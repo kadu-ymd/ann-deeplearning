@@ -132,5 +132,5 @@ extra_javascript:
   - https://fastly.jsdelivr.net/npm/echarts/dist/echarts.min.js
 
 nav:
-  - Exercício da aula de Data: ./ex1_data/main.md
-
+  - Data: ./ex1_data/main.md
+  - Perceptron: ./ex2_perceptron/main.md 
