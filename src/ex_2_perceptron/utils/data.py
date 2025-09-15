@@ -18,3 +18,4 @@ class MultiDimensionData:
     
     def sample_initialize(self):
         return np.random.multivariate_normal(self.mu, self.cov, self.n)
+    
