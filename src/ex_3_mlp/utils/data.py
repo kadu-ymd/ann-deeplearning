@@ -23,49 +23,63 @@ class MultiDimensionData:
 
 class MLP:
 
-    def __init__(self, input, output, W_hidden, b_hidden, W_output, b_output,
-                 eta, activation_function, activation_function_d,
-                 loss_function, loss_function_d):
-        self.input = input
-        self.output = output
-        self.W_hidden = W_hidden
-        self.b_hidden = b_hidden
-        self.W_output = W_output
-        self.b_output = b_output
-        self.eta = eta
-        self.activation_function = activation_function
-        self.activation_function_d = activation_function_d
-        self.loss_function = loss_function
-        self.loss_function_d = loss_function_d
+    def __init__(self, **kwargs):
+        self.input  = kwargs.get("input")
+        self.output = kwargs.get("output")
+        self.W_hidden = kwargs.get("W_hidden")
+        self.b_hidden = kwargs.get("b_hidden")
+        self.W_output = kwargs.get("W_output")
+        self.b_output = kwargs.get("b_output")
+        self.eta = kwargs.get("eta", 0.001)
+
+        # Hidden layer
+        self.hidden_activation   = kwargs.get("hidden_activation")
+        self.hidden_activation_d = kwargs.get("hidden_activation_d")
+
+        # Output layer (opcional)
+        self.output_activation   = kwargs.get("output_activation", None)
+        self.output_activation_d = kwargs.get("output_activation_d", None)
+
+        # Loss
+        self.loss_function   = kwargs.get("loss_function")
+        self.loss_function_d = kwargs.get("loss_function_d")
 
     def forward(self):
-        # Hidden Layer
-        z1_pre = self.W_hidden @ self.input + self.b_hidden
-        z1_activation = self.activation_function(z1_pre)
+        # Hidden layer
+        # z1_pre: (n_neurons X n_samples); 
+        # W1: (n_neurons X n_feat); input: (n_feat X n_samples); b1: (n_neurons X n_samples)
+        z1_pre = self.W_hidden.T @ self.input + self.b_hidden
+        z1_act = self.hidden_activation(z1_pre)
 
-        # Output Layer
-        z2_pre = self.W_output @ z1_activation + self.b_output
-        z2_activation = self.activation_function(z2_pre)
+        # Output layer
+        # z2_pre: (n_outputs X n_samples); 
+        # W2: (n_outputs X n_neurons); z1_act: (n_neurons X n_samples); b2: (n_outputs X n_samples)
+        z2_pre = self.W_output.T @ z1_act + self.b_output
 
-        return z1_pre, z1_activation, z2_pre, z2_activation
+        if self.output_activation:
+            z2_act = self.output_activation(z2_pre)
+        else:
+            z2_act = z2_pre
 
-    def loss_calculation(self, output, prediction):
-        return self.loss_function(output, prediction)
+        return z1_pre, z1_act, z2_pre, z2_act
 
-    def backpropagation(self, z1_pre, z1_activation, z2_pre, z2_activation):
-        # Output layer error
-        output_error = self.loss_function_d(
-            self.output, z2_activation) * self.activation_function_d(z2_pre)
+    def loss_calculation(self, true_label, predicted_label):
+        return self.loss_function(true_label, predicted_label)
 
-        # Hidden layer error
-        hidden_error = (self.W_output.T @ output_error) * self.activation_function_d(z1_pre)
+    def backpropagation(self, z1_pre, z1_act, z2_pre, z2_act):
+        # formato n_output X n_samples
+        output_error = self.loss_function_d(self.output, z2_act)
 
-        # Gradients for output layer
-        W_output_gradient = output_error @ z1_activation.T
+        if self.output_activation_d:
+            output_error *= self.output_activation_d(z2_pre) 
+
+        # formato n_neurons X n_samples
+        hidden_error = (self.W_output @ output_error) * self.hidden_activation_d(z1_pre)
+
+        # Gradientes
+        W_output_gradient = z1_act @ output_error.T
         b_output_gradient = np.sum(output_error, axis=1, keepdims=True)
-
-        # Gradients for hidden layer
-        W_hidden_gradient = hidden_error @ self.input.T
+        W_hidden_gradient = self.input @ hidden_error.T
         b_hidden_gradient = np.sum(hidden_error, axis=1, keepdims=True)
 
         return W_hidden_gradient, b_hidden_gradient, W_output_gradient, b_output_gradient
@@ -76,8 +90,8 @@ class MLP:
         self.b_hidden -= self.eta * b_hidden_gradient
         self.W_output -= self.eta * W_output_gradient
         self.b_output -= self.eta * b_output_gradient
-
         return self.W_hidden, self.b_hidden, self.W_output, self.b_output
+
 
 
 def shuffle_sample(sample_array, labels_array):
