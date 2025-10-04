@@ -1,34 +1,23 @@
-# Template de Entrega
+# ANN e Deep Learning
 
 
-???+ info inline end "Edição"
+???+ info inline end "Turma"
 
-    2025.1
-
-
-## Grupo/Kit X
-
-1. João da Silva
-1. Pedro de Souza
-1. Maria Oliveira
-1. Grupo K
-    - João da Silva
-    - Pedro de Souza
-
-
-
-!!! tip "Instruções"
-
-    Vocês devem utilizar este template como um bloco de notas para registrar o que foi feito e o que falta fazer. Vocês devem adicionar as informações necessárias.
-    O template deve ser editado e atualizado a cada entrega, registrando assim a data de entrega e o que foi feito até o momento via Git.
+    2025.2
 
 ## Entregas
 
-- [x] Roteiro 1 - Data 23/02/2025
-- [ ] Roteiro 2
-- [ ] Roteiro 3
-- [ ] Roteiro 4
-- [ ] Projeto
+???+ note "Exercícios"
+    - [x] Data - Prazo 05/09/2025
+    - [x] Perceptron - Prazo 14/09/2025
+    - [x] MLP - Prazo 21/09/2025
+    - [ ] Metrics - Prazo --/--/2025
+
+???+ note "Projetos"
+    - [ ] Classificação - Prazo --/--/2025
+    - [ ] Regressão - Prazo --/--/2025
+    - [ ] Generative Models - Prazo --/--/2025
+
 
 ## Diagramas
 

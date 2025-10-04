@@ -112,6 +112,7 @@ plugins:
   - git-committers:
       repository: kadu-ymd/kadu-ymd.github.com
       branch: main
+      token: !ENV GITHUB_TOKEN
   - search
   - badges
   - minify:
@@ -132,5 +133,7 @@ extra_javascript:
   - https://fastly.jsdelivr.net/npm/echarts/dist/echarts.min.js
 
 nav:
+  - Home: ./index.md
   - Data: ./ex1_data/main.md
-  - Perceptron: ./ex2_perceptron/main.md 
+  - Perceptron: ./ex2_perceptron/main.md
+  - MLP: ./ex3_mlp/main.md
