@@ -13,10 +13,10 @@ Para essa atividade, uma sequência de passos foi seguida a fim de garantir a ex
     - Bias da camada oculta($b^{(1)}$): $n_{neurônios} \times n_{amostras}$
     - Pesos da camada de saída ($W^{(2)}$): $n_{neurônios} \times n_{saídas}$
     - Bias da camada de saída ($b^{(2)}$): $n_{saídas} \times n_{amostras}$
-    - Função de ativação: $tanh'(x) = \frac{e^{2x} - 1}{e^{2x} + 1}$
+    - Função de ativação: $f(x)$
     <!-- mudar para os outros exercícios -->
-    - Derivada da função de ativação: $tanh(x) = 1 - tanh(x)^2$
-    - Função de perda: $\mathcal{L} = \frac{1}{N} \sum_{i=1}^{N}(y_{i} - \hat{y_{i}})^2$
+    - Derivada da função de ativação: $f'(x)$
+    - Função de perda: $\mathcal{L}$
 
 3. Treino;
 
@@ -26,7 +26,7 @@ Para essa atividade, uma sequência de passos foi seguida a fim de garantir a ex
 
 - Passo 1
 
-=== "Inicialização"
+=== "Inicialização da amostra"
 
     ``` { .py title=main.py }
     samples_1 = np.array([[0.5, -0.2]]).T   # n_features X n_samples 
@@ -35,7 +35,7 @@ Para essa atividade, uma sequência de passos foi seguida a fim de garantir a ex
 
 - Passo 2
 
-=== "Definição"
+=== "Definição de hiperparâmetros"
 
     ``` { .py title=main.py }
     W1_1 = np.array([[0.3, 0.2], [-0.1, 0.4]])  # n_features X n_neurons
@@ -50,6 +50,8 @@ Para essa atividade, uma sequência de passos foi seguida a fim de garantir a ex
     loss_function_1 = lambda y, y_pred: 0.5 * (y - y_pred)**2
     loss_function_1_derivative = lambda y, y_pred: y - y_pred
     ```
+
+Foi utilizada, conforme o enunciado do [exercício](https://insper.github.io/ann-dl/versions/2025.2/exercises/mlp/#exercise-1-manual-calculation-of-mlp-steps), a função de perda *Mean Squared Error* (MSE) e a função de ativação $tanh(x)$.
 
 - Passo 3
 
@@ -172,7 +174,7 @@ $\frac{\partial \mathcal{L}}{\partial b^{(2)}} \approx 0.03577581$
 
 - Passo 1
 
-=== "Inicialização"
+=== "Inicialização da amostra"
 
     ``` { .py title={main.py} }
     N_FEATURES_2 = 2
@@ -218,7 +220,7 @@ A imagem (_ref_) ilustra graficamente a relação entre as *features*.
 
 - Passo 2
 
-=== "Definição"
+=== "Definição de hiperparâmetros"
 
     ``` { .py title=main.py }
     val = (6 / (N_FEATURES_2 + N_OUTPUT_2))**.5
@@ -253,6 +255,8 @@ Aqui, inicializamos os pesos com o método de Xavier/Glorot. No exercício, é u
 $$
 x = \sqrt{\frac{6}{n_{inputs} + n_{outputs}}} \quad \text{(2.1)}
 $$
+
+Foi utilizada a função de ativação sigmoide, pois os valores estão normalizados, juntamente à função de perda *Binary Cross-Entropy* (BCE), por se tratar de uma classificação binária.
 
 - Passo 3
 
@@ -345,7 +349,7 @@ Após o treinamento, foi obtida uma acurácia de $90.50\%$, como esperado de aco
 
 - Passo 1
 
-=== "Inicialização"
+=== "Inicialização da amostra"
 
     ``` { .py title=main.py }
     SAMPLE_SIZE_3           = 1500
@@ -407,7 +411,7 @@ A figura 4 mostra um gráfico da distribuição das amostras em relação à 2 f
 
 - Passo 2
 
-=== "Definição"
+=== "Definição dos hiperparâmetros"
 
     ``` { .py title=main.py }
     val = (6 / (N_FEATURES_3 + N_CLASSES_3))**.5
@@ -445,7 +449,7 @@ A figura 4 mostra um gráfico da distribuição das amostras em relação à 2 f
         return (y_pred - y) / N
     ```
 
-Nesse exercício, utilizamos a função de ativação $tanh(x)$, visto que a amostra foi normalizada, e $softmax$, que é adequada para problemas de classificação multi-classe. Para avaliação, foi utilizada a função de perda *Categorical Cross-Entropy*.
+Nesse exercício, utilizamos a função de ativação $tanh(x)$, visto que a amostra foi normalizada, e $softmax(x)$, que é adequada para problemas de classificação multi-classe. Para avaliação, foi utilizada a função de perda *Categorical Cross-Entropy*.
 
 - Passo 3
 
@@ -539,4 +543,42 @@ Nesse exercício, utilizamos a função de ativação $tanh(x)$, visto que a amo
             epoch_accuracy_3[n_epochs].append(epoch_acc)
     ```
 
-Dessa vez, fazemos o treinamento em *batches* como tentativa de aumentar a qualidade do modelo
+Dessa vez, fazemos o treinamento em *batches* como tentativa de aumentar a qualidade do modelo. 
+
+- Passo 4
+
+=== "Teste"
+
+``` { .py title=main.py }
+kwargs_test_3 = {
+                "input": test_sample_norm_3, 
+                "output": test_sample_labels_3, 
+                "W_hidden": W_hidden_train_3, 
+                "b_hidden": b_hidden_train_3, 
+                "W_output": W_output_train_3, 
+                "b_output": b_output_train_3, 
+                "eta": .001, 
+                "hidden_activation": activation_array[0], 
+                "hidden_activation_d": activation_d_array[0], 
+                "output_activation": activation_array[1],
+                "output_activation_d": activation_d_array[1], 
+                "loss_function": cce,
+                "loss_function_d": cce_d
+            }
+
+mlp_object_test_3 = data.MLP(**kwargs_test_3)
+
+def accuracy_from_preds(z2_act, y_true):
+    # z2_act: (M, N), y_true: one-hot (M, N) ou indices (N,)
+    y_pred_idx = np.argmax(z2_act, axis=0)
+    if y_true.ndim == 2:
+        y_true_idx = np.argmax(y_true, axis=0)
+    else:
+        y_true_idx = y_true
+    return np.mean(y_pred_idx == y_true_idx), y_pred_idx, y_true_idx
+
+z1, h1, z2, y_pred_test = mlp_object_test_3.forward()
+acc_test, preds_idx, true_idx = accuracy_from_preds(y_pred_test, test_sample_labels_3) 
+```
+
+A acurácia do modelo na amostragem de teste foi de $83.58\%$.
