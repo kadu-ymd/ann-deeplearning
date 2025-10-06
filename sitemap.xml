@@ -2,38 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/</loc>
-         <lastmod>2025-09-15</lastmod>
+         <lastmod>2025-10-06</lastmod>
     </url>
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/ex1_data/main/</loc>
-         <lastmod>2025-09-15</lastmod>
+         <lastmod>2025-10-06</lastmod>
     </url>
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/ex2_perceptron/main/</loc>
-         <lastmod>2025-09-15</lastmod>
+         <lastmod>2025-10-06</lastmod>
     </url>
     <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/projeto/main/</loc>
-         <lastmod>2025-09-15</lastmod>
-    </url>
-    <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/roteiro1/main/</loc>
-         <lastmod>2025-09-15</lastmod>
-    </url>
-    <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/roteiro2/main/</loc>
-         <lastmod>2025-09-15</lastmod>
-    </url>
-    <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/roteiro3/main/</loc>
-         <lastmod>2025-09-15</lastmod>
-    </url>
-    <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/roteiro4/main/</loc>
-         <lastmod>2025-09-15</lastmod>
-    </url>
-    <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/thisdocumentation/main/</loc>
-         <lastmod>2025-09-15</lastmod>
+         <loc>https://kadu-ymd.github.io/ann-deeplearning/ex3_mlp/main/</loc>
+         <lastmod>2025-10-06</lastmod>
     </url>
 </urlset>
