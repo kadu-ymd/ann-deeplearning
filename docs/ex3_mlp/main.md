@@ -1,6 +1,6 @@
 !!! abstract inline end "Informações da entrega"
-    Data 21/09/2025
-    O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/mlp/main).
+    - Data 21/09/2025
+    - O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/mlp).
 
 Para essa atividade, uma sequência de passos foi seguida a fim de garantir a execução correta do MLP:
 
