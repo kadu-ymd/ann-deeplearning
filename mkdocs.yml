@@ -134,6 +134,9 @@ extra_javascript:
 
 nav:
   - Home: ./index.md
-  - Data: ./ex1_data/main.md
-  - Perceptron: ./ex2_perceptron/main.md
-  - MLP: ./ex3_mlp/main.md
+  - Exercícios:
+    - Data: ./exs/ex1_data/main.md
+    - Perceptron: ./exs/ex2_perceptron/main.md
+    - MLP: ./exs/ex3_mlp/main.md
+  - Projetos:
+    - Classificação: ./projs/proj1_classification/main.md

@@ -1,9 +1,9 @@
 # ANN e Deep Learning
 
 
-???+ info inline end "Turma"
+??? info inline end "Turma"
 
-    2025.2
+    :calendar: 2025.2
 
 ## Entregas
 
