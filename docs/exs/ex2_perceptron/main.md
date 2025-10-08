@@ -1,11 +1,15 @@
-O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/perceptron/main).
+!!! abstract "Informações da entrega"
+    :calendar: 14/09/2025
+
+    :book: O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/perceptron).
+
+
 
 Para trabalhar nos exercícios, foi feita um arquivo de utilidades (`./utils/data.py`) com algumas funções comuns que foram utilizadas em outras situações também.
 
-``` py
+``` { .py title=data.py }
 
 import numpy as np
-
 
 class Data:
     def __init__(self, mu, std, n):

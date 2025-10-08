@@ -1,3 +1,8 @@
+!!! abstract "Informações da entrega"
+    :calendar: 05/09/2025
+
+    :book: O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/data).
+
 ## Exercício 1
 
 Os dados foram gerados por um script em Python, apresentado a seguir:
@@ -15,25 +20,25 @@ Os dados foram gerados por um script em Python, apresentado a seguir:
         class_2 = Data(mu=(8,  1), std=(.9,   .9), n=N)
         class_3 = Data(mu=(15, 4), std=(.5,  2.0), n=N)
 
-        x0, y0 = class_0.sample_initialize()
+    x0, y0 = class_0.sample_initialize()
         x1, y1 = class_1.sample_initialize()
         x2, y2 = class_2.sample_initialize()
         x3, y3 = class_3.sample_initialize()
 
-        plt.plot(x0, y0, "o", label="Classe 0")
+    plt.plot(x0, y0, "o", label="Classe 0")
         plt.plot(x1, y1, "o", label="Classe 1")
         plt.plot(x2, y2, "o", label="Classe 2")
         plt.plot(x3, y3, "o", label="Classe 3")
 
-        plt.legend()
+    plt.legend()
 
-        plt.title("Plot das classes")
+    plt.title("Plot das classes")
 
-        plt.show()
+    plt.show()
 
-        return 0
+    return 0
 
-    if __name__ == "__main__":
+    if__name__ == "__main__":
         main()
 
     ```
@@ -43,23 +48,22 @@ Os dados foram gerados por um script em Python, apresentado a seguir:
     ``` py
     import numpy as np
 
-
     class Data:
-        def __init__(self, mu, std, n):
+        def__init__(self, mu, std, n):
             self.mu_x, self.mu_y = mu
             self.std_x, self.std_y = std
             self.n = n
 
-        def sample_initialize(self) -> tuple[np.ndarray, np.ndarray]:
+    def sample_initialize(self) -> tuple[np.ndarray, np.ndarray]:
             return np.random.normal(self.mu_x, self.std_x, self.n), np.random.normal(self.mu_y, self.std_y, self.n)
 
     class MultiDimensionData:
-        def __init__(self, mu, cov, n):
+        def__init__(self, mu, cov, n):
             self.mu = mu
             self.cov = cov
             self.n = n
-        
-        def sample_initialize(self):
+
+    def sample_initialize(self):
             return np.random.multivariate_normal(self.mu, self.cov, self.n)
     ```
 
@@ -85,7 +89,6 @@ As amostras foram geradas pelo código apresentado abaixo:
     import matplotlib.pyplot as plt
     import numpy as np
 
-
     def main():
         mu_A = np.array([0, 0, 0, 0, 0])
         cov_A = np.array([[1.0, 0.8, 0.1, 0.0, 0.0],
@@ -94,24 +97,24 @@ As amostras foram geradas pelo código apresentado abaixo:
                         [0.0, 0.0, 0.5, 1.0, 0.2],
                         [0.0, 0.0, 0.0, 0.2, 1.0]])
 
-        mu_B = np.array([1.5, 1.5, 1.5, 1.5, 1.5])
+    mu_B = np.array([1.5, 1.5, 1.5, 1.5, 1.5])
         cov_B = np.array([[ 1.5, -0.7, 0.2, 0.0, 0.0],
                         [-0.7,  1.5, 0.4, 0.0, 0.0],
                         [ 0.2,  0.4, 1.5, 0.6, 0.0],
                         [ 0.0,  0.0, 0.6, 1.5, 0.3],
                         [ 0.0,  0.0, 0.0, 0.3, 1.5]])
 
-        class_A = MultiDimensionData(mu=mu_A, cov=cov_A, n=500)
+    class_A = MultiDimensionData(mu=mu_A, cov=cov_A, n=500)
         class_B = MultiDimensionData(mu=mu_B, cov=cov_B, n=500)
 
-        sample_A = class_A.sample_initialize()
+    sample_A = class_A.sample_initialize()
         sample_B = class_B.sample_initialize()
 
-        dataset = np.concatenate((sample_A, sample_B))
+    dataset = np.concatenate((sample_A, sample_B))
 
-        return 0
+    return 0
 
-    if __name__ == "__main__":
+    if__name__ == "__main__":
         main()
     ```
 
@@ -120,23 +123,22 @@ As amostras foram geradas pelo código apresentado abaixo:
     ``` py
     import numpy as np
 
-
     class Data:
-        def __init__(self, mu, std, n):
+        def__init__(self, mu, std, n):
             self.mu_x, self.mu_y = mu
             self.std_x, self.std_y = std
             self.n = n
 
-        def sample_initialize(self) -> tuple[np.ndarray, np.ndarray]:
+    def sample_initialize(self) -> tuple[np.ndarray, np.ndarray]:
             return np.random.normal(self.mu_x, self.std_x, self.n), np.random.normal(self.mu_y, self.std_y, self.n)
 
     class MultiDimensionData:
-        def __init__(self, mu, cov, n):
+        def__init__(self, mu, cov, n):
             self.mu = mu
             self.cov = cov
             self.n = n
-        
-        def sample_initialize(self):
+
+    def sample_initialize(self):
             return np.random.multivariate_normal(self.mu, self.cov, self.n)
     ```
 
@@ -146,13 +148,13 @@ Em seguida, aplicou-se o conceito de **PCA** (**Principal Component Analysis**) 
 
 Após gerar as amostras (classes A e B), é necessário obter a matriz de covariância dos dados como um todo.
 
-``` py
+```py
 mat = np.cov(dataset, rowvar=False)
 ```
 
 Depois disso, precisamos obter os autovalores e os autovetores dessa matriz, sendo que os autovalores servirão para auxiliar na definição da importância das *features* e os autovetores são essenciais para que possamos obter um novo conjunto de amostras, agora apenas com as *features* selecionadas.
 
-``` py
+```py
 # Obtenção dos autovalores e autovetores
 eigenvalues, eigenvectors = np.linalg.eig(mat)
 
@@ -198,7 +200,6 @@ O dataset apresenta como objetivo prever se um passageiro foi transportado para 
 Existem 14 features diferentes do dataset a ser analisado. Podemos separá-las em numéricas e em categóricas, como mostrado a seguir:
 
 - **Numéricas**: `Age`, `RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck`;
-
 - **Categóricas**: `HomePlanet`, `CryoSleep`, `Cabin`, `Destination`, `VIP`, `Name`, `Transported`.
 
 ### **Valores ausentes**
@@ -206,6 +207,7 @@ Existem 14 features diferentes do dataset a ser analisado. Podemos separá-las e
 Podemos observar na imagem abaixo a quantidade de valores nulos por *feature*.
 
 <!-- DEU CErTO -->
+
 ![Histograma dos valores nulos por coluna (feature)](./img/null_histpng.png)
 
 ### **Pré-processamento dos dados**
@@ -213,7 +215,6 @@ Podemos observar na imagem abaixo a quantidade de valores nulos por *feature*.
 Para cada tipo de feature, os dados faltantes foram tratados de maneiras diferentes:
 
 - **categóricas (binárias e nominais)**: foi extraída a **moda** da coluna e os valores ausentes foram preenchidos por ela, visto que é uma estratégia simples, mas que contorna o problema de impossibilitar o *one-hot encoding*, por exemplo.
-
 - **numéricas**: foi extraída a **mediana** e os valores ausentes preenchidos por ela, da mesma forma, é uma técnica simples que não exige muito tratamento, além de garantir roubstez a outliers, algo que o uso da média não possibilitaria.
 
 Dessa forma, apesar de o dataset sofrer um leve desbalanceamento, os dados puderam ser mantidos em vez de remover linhas inteiras que contivessem valores nulos, mantendo a integridade da base de dados.

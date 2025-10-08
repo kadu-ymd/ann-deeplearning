@@ -138,5 +138,6 @@ nav:
     - Data: ./exs/ex1_data/main.md
     - Perceptron: ./exs/ex2_perceptron/main.md
     - MLP: ./exs/ex3_mlp/main.md
+    - Metrics: ./exs/ex4_metrics/main.md
   - Projetos:
     - Classificação: ./projs/proj1_classification/main.md
