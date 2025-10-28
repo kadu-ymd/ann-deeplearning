@@ -3,7 +3,10 @@ env/
 .cache/
 .vscode/
 target/
-data
+data/
+*.pt
+*.pth
+checkpoints/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
