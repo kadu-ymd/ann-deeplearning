@@ -56,7 +56,7 @@ Foi utilizada, conforme o enunciado do [exercício](https://insper.github.io/ann
 
 === "Treinamento"
 
-    ``` { .py title=main.py }
+    ``` py title="main.py"
     kwargs_1 = {
                 "input": samples_1,
                 "output": labels_1,
@@ -86,10 +86,10 @@ Foi utilizada, conforme o enunciado do [exercício](https://insper.github.io/ann
 
 === "Classe"
 
-    ``` { .py title=data.py }
+    ``` py title="models.py"
     class MLP:
 
-    def__init__(self, **kwargs):
+        def__init__(self, **kwargs):
             self.input  = kwargs.get("input")
             self.output = kwargs.get("output")
             self.W_hidden = kwargs.get("W_hidden")
@@ -98,59 +98,59 @@ Foi utilizada, conforme o enunciado do [exercício](https://insper.github.io/ann
             self.b_output = kwargs.get("b_output")
             self.eta = kwargs.get("eta", 0.001)
 
-    # Hidden layer
+            # Hidden layer
             self.hidden_activation   = kwargs.get("hidden_activation")
             self.hidden_activation_d = kwargs.get("hidden_activation_d")
 
-    # Output layer (opcional)
+            # Output layer (opcional)
             self.output_activation   = kwargs.get("output_activation", None)
             self.output_activation_d = kwargs.get("output_activation_d", None)
 
-    # Loss
+            # Loss
             self.loss_function   = kwargs.get("loss_function")
             self.loss_function_d = kwargs.get("loss_function_d")
 
-    def forward(self):
+        def forward(self):
             # Hidden layer
             # z1_pre: (n_neurons X n_samples);
             # W1: (n_neurons X n_feat); input: (n_feat X n_samples); b1: (n_neurons X n_samples)
             z1_pre = self.W_hidden.T @ self.input + self.b_hidden
             z1_act = self.hidden_activation(z1_pre)
 
-    # Output layer
+            # Output layer
             # z2_pre: (n_outputs X n_samples);
             # W2: (n_outputs X n_neurons); z1_act: (n_neurons X n_samples); b2: (n_outputs X n_samples)
             z2_pre = self.W_output.T @ z1_act + self.b_output
 
-    if self.output_activation:
+            if self.output_activation:
                 z2_act = self.output_activation(z2_pre)
             else:
                 z2_act = z2_pre
 
-    return z1_pre, z1_act, z2_pre, z2_act
+            return z1_pre, z1_act, z2_pre, z2_act
 
-    def loss_calculation(self, true_label, predicted_label):
+        def loss_calculation(self, true_label, predicted_label):
             return self.loss_function(true_label, predicted_label)
 
-    def backpropagation(self, z1_pre, z1_act, z2_pre, z2_act):
+        def backpropagation(self, z1_pre, z1_act, z2_pre, z2_act):
             # formato n_output X n_samples
             output_error = self.loss_function_d(self.output, z2_act)
 
-    if self.output_activation_d:
+            if self.output_activation_d:
                 output_error *= self.output_activation_d(z2_pre)
 
-    # formato n_neurons X n_samples
+            # formato n_neurons X n_samples
             hidden_error = (self.W_output @ output_error) * self.hidden_activation_d(z1_pre)
 
-    # Gradientes
+            # Gradientes
             W_output_gradient = z1_act @ output_error.T
             b_output_gradient = np.sum(output_error, axis=1, keepdims=True)
             W_hidden_gradient = self.input @ hidden_error.T
             b_hidden_gradient = np.sum(hidden_error, axis=1, keepdims=True)
 
-    return W_hidden_gradient, b_hidden_gradient, W_output_gradient, b_output_gradient
+            return W_hidden_gradient, b_hidden_gradient, W_output_gradient, b_output_gradient
 
-    def update_weights(self, W_hidden_gradient, b_hidden_gradient,
+        def update_weights(self, W_hidden_gradient, b_hidden_gradient,
                         W_output_gradient, b_output_gradient):
             self.W_hidden -= self.eta * W_hidden_gradient
             self.b_hidden -= self.eta * b_hidden_gradient
@@ -175,7 +175,7 @@ $\frac{\partial \mathcal{L}}{\partial b^{(2)}} \approx 0.03577581$
 
 === "Inicialização da amostra"
 
-    ``` { .py title={main.py} }
+    ``` py title="main.py"
     N_FEATURES_2 = 2
     N_OUTPUT_2 = 1
     N_NEURONS_2 = 10
@@ -221,7 +221,7 @@ A imagem (_ref_) ilustra graficamente a relação entre as *features*.
 
 === "Definição de hiperparâmetros"
 
-    ``` { .py title=main.py }
+    ``` py title="main.py"
     val = (6 / (N_FEATURES_2 + N_OUTPUT_2))**.5
 
     W1_2 = np.random.uniform(-val, val, size=(N_FEATURES_2, N_NEURONS_2))
@@ -261,7 +261,7 @@ Foi utilizada a função de ativação sigmoide, pois os valores estão normaliz
 
 === "Treinamento"
 
-    ``` { .py title=train.py }
+    ``` py title="train.py"
     kwargs_2 = {"input": train_sample_norm_2,
             "output": train_sample_labels_2,
             "W_hidden": W1_2,
@@ -313,7 +313,7 @@ O treinamento foi realizado utilizando 100, 300 e 500 épocas, e foi avaliada de
 
 === "Teste"
 
-    ``` { .py title=main.py }
+    ``` py title="main.py"
     kwargs_test_2 = {
                     "input": test_sample_norm_2,
                     "output": test_sample_labels_2,
@@ -350,7 +350,7 @@ Após o treinamento, foi obtida uma acurácia de $90.50\%$, como esperado de aco
 
 === "Inicialização da amostra"
 
-    ``` { .py title=main.py }
+    ``` py title="main.py"
     SAMPLE_SIZE_3           = 1500
     N_FEATURES_3            = 4
     N_INFORMATIVE_3         = 4
@@ -412,7 +412,7 @@ A figura 4 mostra um gráfico da distribuição das amostras em relação à 2 f
 
 === "Definição dos hiperparâmetros"
 
-    ``` { .py title=main.py }
+    ``` py title="main.py"
     val = (6 / (N_FEATURES_3 + N_CLASSES_3))**.5
 
     W1_3 = np.random.uniform(-val, val, size=(N_FEATURES_3, N_NEURONS_3))
@@ -454,7 +454,7 @@ Nesse exercício, utilizamos a função de ativação $tanh(x)$, visto que a amo
 
 === "Treinamento"
 
-    ``` { .py title=main.py }
+    ``` py title="main.py"
     THRESHOLD_3 = .5
     activation_array = [tanh, softmax]
     activation_d_array = [tanh_d, None]
@@ -548,36 +548,36 @@ Dessa vez, fazemos o treinamento em *batches* como tentativa de aumentar a quali
 
 === "Teste"
 
-```{
-kwargs_test_3 = {
-                "input": test_sample_norm_3, 
-                "output": test_sample_labels_3, 
-                "W_hidden": W_hidden_train_3, 
-                "b_hidden": b_hidden_train_3, 
-                "W_output": W_output_train_3, 
-                "b_output": b_output_train_3, 
-                "eta": .001, 
-                "hidden_activation": activation_array[0], 
-                "hidden_activation_d": activation_d_array[0], 
-                "output_activation": activation_array[1],
-                "output_activation_d": activation_d_array[1], 
-                "loss_function": cce,
-                "loss_function_d": cce_d
-            }
+    ``` py
+    kwargs_test_3 = {
+                    "input": test_sample_norm_3, 
+                    "output": test_sample_labels_3, 
+                    "W_hidden": W_hidden_train_3, 
+                    "b_hidden": b_hidden_train_3, 
+                    "W_output": W_output_train_3, 
+                    "b_output": b_output_train_3, 
+                    "eta": .001, 
+                    "hidden_activation": activation_array[0], 
+                    "hidden_activation_d": activation_d_array[0], 
+                    "output_activation": activation_array[1],
+                    "output_activation_d": activation_d_array[1], 
+                    "loss_function": cce,
+                    "loss_function_d": cce_d
+                }
 
-mlp_object_test_3 = data.MLP(**kwargs_test_3)
+    mlp_object_test_3 = data.MLP(**kwargs_test_3)
 
-def accuracy_from_preds(z2_act, y_true):
-    # z2_act: (M, N), y_true: one-hot (M, N) ou indices (N,)
-    y_pred_idx = np.argmax(z2_act, axis=0)
-    if y_true.ndim == 2:
-        y_true_idx = np.argmax(y_true, axis=0)
-    else:
-        y_true_idx = y_true
-    return np.mean(y_pred_idx == y_true_idx), y_pred_idx, y_true_idx
+    def accuracy_from_preds(z2_act, y_true):
+        # z2_act: (M, N), y_true: one-hot (M, N) ou indices (N,)
+        y_pred_idx = np.argmax(z2_act, axis=0)
+        if y_true.ndim == 2:
+            y_true_idx = np.argmax(y_true, axis=0)
+        else:
+            y_true_idx = y_true
+        return np.mean(y_pred_idx == y_true_idx), y_pred_idx, y_true_idx
 
-z1, h1, z2, y_pred_test = mlp_object_test_3.forward()
-acc_test, preds_idx, true_idx = accuracy_from_preds(y_pred_test, test_sample_labels_3) 
-```
+    z1, h1, z2, y_pred_test = mlp_object_test_3.forward()
+    acc_test, preds_idx, true_idx = accuracy_from_preds(y_pred_test, test_sample_labels_3) 
+    ```
 
 A acurácia do modelo na amostragem de teste foi de $83.58\%$.
