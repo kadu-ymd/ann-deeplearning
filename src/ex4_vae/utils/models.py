@@ -2,7 +2,6 @@ from collections import OrderedDict
 import torch
 import torch.nn as nn
 
-
 class VAE(nn.Module):
     def __init__(self, device, input_dim=784, hidden_dim=400, latent_dim=10):
         super(VAE, self).__init__()

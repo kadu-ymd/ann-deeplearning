@@ -110,9 +110,8 @@ plugins:
       enable_creation_date: true
   - git-authors
   - git-committers:
-      repository: kadu-ymd/kadu-ymd.github.com
+      repository: kadu-ymd/ann-deeplearning
       branch: main
-      token: !ENV GITHUB_TOKEN
   - search
   - badges
   - minify:

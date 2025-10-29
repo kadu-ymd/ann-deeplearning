@@ -10,9 +10,9 @@
     - [x] Data - Prazo 05/09/2025
     - [x] Perceptron - Prazo 14/09/2025
     - [x] MLP - Prazo 21/09/2025
-    - [ ] Metrics - Prazo --/--/2025
+    - [ ] VAE - Prazo 26/10/2025
 
 ???+ note "Projetos"
     - [x] Classificação - Prazo 05/10/2025
-    - [ ] Regressão - Prazo --/--/2025
+    - [ ] Regressão - Prazo 26/10/2025
     - [ ] Generative Models - Prazo --/--/2025
