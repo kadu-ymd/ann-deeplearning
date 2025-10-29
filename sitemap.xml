@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/</loc>
-         <lastmod>2025-10-08</lastmod>
+         <lastmod>2025-10-29</lastmod>
     </url>
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/exs/ex1_data/main/</loc>
-         <lastmod>2025-10-08</lastmod>
+         <lastmod>2025-10-29</lastmod>
     </url>
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/exs/ex2_perceptron/main/</loc>
-         <lastmod>2025-10-08</lastmod>
+         <lastmod>2025-10-29</lastmod>
     </url>
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/exs/ex3_mlp/main/</loc>
-         <lastmod>2025-10-08</lastmod>
+         <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://kadu-ymd.github.io/ann-deeplearning/exs/ex4_metrics/main/</loc>
-         <lastmod>2025-10-08</lastmod>
+         <loc>https://kadu-ymd.github.io/ann-deeplearning/exs/ex4_vae/main/</loc>
+         <lastmod>2025-10-29</lastmod>
     </url>
     <url>
          <loc>https://kadu-ymd.github.io/ann-deeplearning/projs/proj1_classification/main/</loc>
-         <lastmod>2025-10-08</lastmod>
+         <lastmod>2025-10-29</lastmod>
     </url>
 </urlset>
