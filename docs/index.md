@@ -10,7 +10,7 @@
     - [x] Data - Prazo 05/09/2025
     - [x] Perceptron - Prazo 14/09/2025
     - [x] MLP - Prazo 21/09/2025
-    - [ ] VAE - Prazo 26/10/2025
+    - [x] VAE - Prazo 26/10/2025
 
 ???+ note "Projetos"
     - [x] Classificação - Prazo 05/10/2025
