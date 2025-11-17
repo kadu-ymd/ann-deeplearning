@@ -1,5 +1,5 @@
 !!! abstract "Informações da entrega"
-    📆 Data 21/09/2025
+    📆 Deadline: 21/09/2025
 
     📖 O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/mlp).
 
@@ -16,8 +16,6 @@ Para essa atividade, uma sequência de passos foi seguida a fim de garantir a ex
    - Pesos da camada de saída ($W^{(2)}$): $n_{neurônios} \times n_{saídas}$
    - Bias da camada de saída ($b^{(2)}$): $n_{saídas} \times n_{amostras}$
    - Função de ativação: $f(x)$
-
-   <!-- mudar para os outros exercícios -->
 
    - Derivada da função de ativação: $f'(x)$
    - Função de perda: $\mathcal{L}$

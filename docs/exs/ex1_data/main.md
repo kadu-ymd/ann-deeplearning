@@ -1,7 +1,7 @@
 !!! abstract "Informações da entrega"
-    :calendar: 05/09/2025
+    📆 Deadline: 05/09/2025
 
-    :book: O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/data).
+    📖 O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/data).
 
 ## Exercício 1
 
@@ -205,8 +205,6 @@ Existem 14 features diferentes do dataset a ser analisado. Podemos separá-las e
 ### **Valores ausentes**
 
 Podemos observar na imagem abaixo a quantidade de valores nulos por *feature*.
-
-<!-- DEU CErTO -->
 
 ![Histograma dos valores nulos por coluna (feature)](./img/null_histpng.png)
 

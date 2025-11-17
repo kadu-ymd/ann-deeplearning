@@ -1,7 +1,7 @@
 !!! abstract "Informações da entrega"
-    :calendar: 14/09/2025
+    📆 Deadline: 14/09/2025
 
-    :book: O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/perceptron).
+    📖 O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/exercises/perceptron).
 
 
 
