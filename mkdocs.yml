@@ -105,6 +105,7 @@ markdown_extensions:
   - tables
       
 plugins:
+  - mkdocs-audio
   - glightbox
   - git-revision-date-localized:
       enable_creation_date: true
@@ -140,4 +141,5 @@ nav:
     - VAE: ./exs/ex4_vae/main.md
   - Projetos:
     - Classificação: ./projs/proj1_classification/main.md
+    - Regressão: ./projs/proj2_regression/main.md
     - Generative: ./projs/proj3_gen_models/main.md
