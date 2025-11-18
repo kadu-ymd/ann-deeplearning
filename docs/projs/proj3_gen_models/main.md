@@ -3,9 +3,16 @@
 
     📖 O enunciado da atividade está disponível neste [link](https://insper.github.io/ann-dl/versions/2025.2/projects/generative).
 
+### Integrantes do Grupo
+- Carlos Eduardo P. Yamada
+
+- Pedro De Lucca S. C. Ferro
+
+## Modelos
+
 As pipelines de modelos utilizadas nesse projeto foram feitas com base em modelos previamente treinados utilizando a ferramenta visual ComfyUI[^1]
 
-## *Text-to-image* (Texto para imagem)
+### *Text-to-image* (Texto para imagem)
 
 A pipeline utilizada nesse exemplo é encontrada na documentação[^2].
 
@@ -57,7 +64,7 @@ Além dos exemplos apresentados no vídeo, as seguintes imagens ilustradas na Fi
 
 </a>
 
-## *Text-to-song* (Texto para música)
+### *Text-to-song* (Texto para música)
 
 O fluxo estudado nesse exemplo pode ser encontrado no tutorial apresentado na documentação oficial[^5].
 

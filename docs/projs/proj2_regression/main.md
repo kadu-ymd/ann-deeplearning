@@ -1,8 +1,9 @@
 # Projeto 02 — Regressão de Preços de Combustíveis (2004-2021)
 
-## Estudantes
-- Pedro De Lucca S. C. Ferro
+## Integrantes do Grupo
 - Carlos Eduardo P. Yamada
+
+- Pedro De Lucca S. C. Ferro
 
 ## Código Fonte
 - Notebook de exploração e modelagem: `src/proj2_regression/main.ipynb`

@@ -14,5 +14,5 @@
 
 ???+ note "Projetos"
     - [x] Classificação - Prazo 05/10/2025
-    - [ ] Regressão - Prazo 26/10/2025
-    - [ ] Generative Models - Prazo --/--/2025
+    - [x] Regressão - Prazo 26/10/2025
+    - [x] Generative Models - Prazo 16/11/2025
